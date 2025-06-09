@@ -1,3 +1,4 @@
+import { Outlet } from 'react-router-dom';
 import Sidebar from './components/Sidebar'
 
 function App() {
@@ -5,8 +6,7 @@ function App() {
     <div className="flex">
       <Sidebar />
       <div className="ml-64 p-6 w-full">
-        <h1 className="text-2xl font-bold">Conteúdo da página</h1>
-        {/* Aqui entra o seu conteúdo ou <Outlet /> se usar rotas */}
+        <Outlet />
       </div>
     </div>
   );

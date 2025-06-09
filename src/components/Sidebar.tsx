@@ -10,7 +10,7 @@ export default function Sidebar() {
       </div>
       <nav className="flex flex-col p-4 space-y-2">
         <NavLink
-          to="/dashboard"
+          to="/"
           className={({ isActive }) =>
             `flex items-center p-2 rounded hover:bg-gray-700 ${
               isActive ? "bg-gray-700" : ""
@@ -20,7 +20,7 @@ export default function Sidebar() {
           <FaChartPie className="mr-3" /> Dashboard
         </NavLink>
         <NavLink
-          to="/despesas"
+          to="/expenses"
           className={({ isActive }) =>
             `flex items-center p-2 rounded hover:bg-gray-700 ${
               isActive ? "bg-gray-700" : ""
@@ -28,16 +28,6 @@ export default function Sidebar() {
           }
         >
           <FaMoneyBill className="mr-3" /> Despesas
-        </NavLink>
-        <NavLink
-          to="/configuracoes"
-          className={({ isActive }) =>
-            `flex items-center p-2 rounded hover:bg-gray-700 ${
-              isActive ? "bg-gray-700" : ""
-            }`
-          }
-        >
-          <FaCog className="mr-3" /> Configurações
         </NavLink>
       </nav>
     </aside>
