@@ -3,6 +3,8 @@ import { FaSave } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+import { api } from "@/services/api";
+import { toast } from "sonner";
 
 export default function NewExpense() {
   const [form, setForm] = useState({
@@ -23,10 +25,28 @@ export default function NewExpense() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Despesa salva:", form);
-    // Enviar para API aqui
+    try {
+      const response = await api.post("/expenses", form);
+
+      toast(response.data.message, {
+        description: `ID: ${response.data.id}`,
+      })
+
+      setForm({
+        description: "",
+        category: "",
+        amount: "",
+        date: "",
+        qtdeInstallment: 1,
+      })
+    } catch (error) {
+      console.error("Erro ao salvar:", error);
+      toast("Erro ao salvar", {
+        description: "Verifique os dados e tente novamente.",
+      })
+    }
   };
 
   return (
